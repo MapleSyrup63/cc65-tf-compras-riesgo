@@ -1,0 +1,8 @@
+digraph L {
+  rankdir=TB; fontname="Helvetica"; node [fontname="Helvetica", fontsize=10, shape=box, style="rounded,filled", fillcolor="#eef4fc", color="#2a78d6"]; edge [fontname="Helvetica", fontsize=9, color="#52514e"];
+  label="Parte B: SGD sincrónico data-parallel (parameter server / all-reduce)"; labelloc=t; fontsize=13;
+  c [label="Coordinador\n1) snapshot de pesos w(t)\n3) barrera: suma gradientes\n4) actualiza w con Adam (único escritor)", fillcolor="#fff3e8", color="#eb6834"];
+  w1 [label="Worker 1\nshard 1 · mini-batch\nLocalGradient()"]; w2 [label="Worker 2\nshard 2 · mini-batch\nLocalGradient()"]; wn [label="Worker N\nshard N · mini-batch\nLocalGradient()"];
+  c -> w1 [label="stepMsg(w, batch)"]; c -> w2; c -> wn;
+  w1 -> c [label="GradMsg(∇, loss)", style=dashed]; w2 -> c [style=dashed]; wn -> c [style=dashed];
+}
