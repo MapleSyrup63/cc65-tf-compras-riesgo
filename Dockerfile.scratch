@@ -1,0 +1,6 @@
+# Variante sin red: usa binarios estáticos ya compilados (CGO_ENABLED=0)
+# go build -o bin/static/loader ./cmd/loader && go build -o bin/static/train ./cmd/train
+FROM scratch
+WORKDIR /app
+COPY bin/static/ /app/bin/
+ENTRYPOINT ["/app/bin/loader"]

@@ -1,0 +1,9 @@
+digraph F {
+  rankdir=TB; fontname="Helvetica"; node [fontname="Helvetica", fontsize=10, shape=box, style="rounded,filled", fillcolor="#eef4fc", color="#2a78d6"]; edge [fontname="Helvetica", fontsize=9, color="#52514e"];
+  label="Parte B: Random Forest distribuido por sharding + bagging"; labelloc=t; fontsize=13;
+  d [label="Train (1.67 M filas)\nbinarizado en 32 bins", shape=cylinder, fillcolor="#ffffff"];
+  s [label="Coordinador: baraja y particiona en W shards", fillcolor="#fff3e8", color="#eb6834"];
+  w1 [label="Worker 1: T/W árboles\nbootstrap sobre shard 1"]; w2 [label="Worker 2: T/W árboles\nbootstrap sobre shard 2"]; wn [label="Worker W: T/W árboles\nbootstrap sobre shard W"];
+  e [label="Coordinador: ensamble de T árboles\npredicción = promedio de probabilidades (voto suave)", fillcolor="#fff3e8", color="#eb6834"];
+  d -> s; s -> w1; s -> w2; s -> wn; w1 -> e [label="channel: árboles"]; w2 -> e; wn -> e;
+}

@@ -1,0 +1,14 @@
+digraph P {
+  rankdir=LR; fontname="Helvetica"; node [fontname="Helvetica", fontsize=10, shape=box, style="rounded,filled", fillcolor="#eef4fc", color="#2a78d6"]; edge [fontname="Helvetica", fontsize=9, color="#52514e"];
+  label="Parte A: pipeline productor → workers → agregador"; labelloc=t; fontsize=13;
+  f [label="9 archivos XLSX", shape=folder, fillcolor="#ffffff"];
+  subgraph cluster_p { label="Productores (semáforo: ≤3 archivos a la vez)"; style=rounded; color="#8a8984";
+    p1 [label="goroutine archivo 1\nsharedStrings y sheet1.xml\npartidos en K bloques"]; p2 [label="goroutine archivo …"]; }
+  raw [label="rawCh\n(lotes de 5,000 filas)", shape=cds, fillcolor="#fff3e8", color="#eb6834"];
+  subgraph cluster_w { label="Workers de limpieza (fan-out)"; style=rounded; color="#8a8984";
+    c1 [label="CleanRow()\nvalida · normaliza · rubro"]; c2 [label="CleanRow()"]; c3 [label="CleanRow()"]; }
+  cln [label="cleanCh\n(lotes limpios + rechazos)", shape=cds, fillcolor="#fff3e8", color="#eb6834"];
+  agg [label="Agregador único (fan-in)\ndueño del mapa de dedup\n→ sin mutex"];
+  feat [label="BuildFeatures()\nmap-reduce con ParallelFor\nP95 por grupo (pool de jobs)"];
+  f -> p1; f -> p2; p1 -> raw; p2 -> raw; raw -> c1; raw -> c2; raw -> c3; c1 -> cln; c2 -> cln; c3 -> cln; cln -> agg -> feat;
+}

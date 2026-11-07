@@ -1,0 +1,24 @@
+# PC3: servicios de carga (Parte A) y entrenamiento (Parte B).
+# En la PC4 se agregan: api (coordinador REST/WebSocket), nodos ML (TCP), mongodb y redis.
+services:
+  loader:
+    build: .
+    image: cc65-compras-riesgo:pc3
+    command: ["/app/bin/loader", "-in", "/app/data/raw", "-out", "/app/data/processed"]
+    volumes:
+      - ./data:/app/data
+      - ./reports:/app/reports
+    deploy:
+      resources:
+        limits: { cpus: "4", memory: 6g }
+
+  trainer:
+    image: cc65-compras-riesgo:pc3
+    depends_on:
+      loader:
+        condition: service_completed_successfully
+    command: ["/app/bin/train", "-data", "/app/data/processed/dataset.bin", "-trees", "100", "-depth", "16", "-epochs", "5"]
+    volumes:
+      - ./data:/app/data
+      - ./reports:/app/reports
+      - ./models:/app/models
