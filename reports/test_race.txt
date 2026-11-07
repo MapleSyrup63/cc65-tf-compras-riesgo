@@ -1,0 +1,34 @@
+?   	github.com/grupo4-cc65/cc65-tf-compras-riesgo/cmd/loader	[no test files]
+?   	github.com/grupo4-cc65/cc65-tf-compras-riesgo/cmd/train	[no test files]
+?   	github.com/grupo4-cc65/cc65-tf-compras-riesgo/cmd/xlsx2csv	[no test files]
+?   	github.com/grupo4-cc65/cc65-tf-compras-riesgo/internal/eda	[no test files]
+=== RUN   TestCleanRowValida
+--- PASS: TestCleanRowValida (0.00s)
+=== RUN   TestCleanRowRechazos
+--- PASS: TestCleanRowRechazos (0.00s)
+=== RUN   TestRubro
+--- PASS: TestRubro (0.00s)
+=== RUN   TestNewerDeterministico
+--- PASS: TestNewerDeterministico (0.00s)
+PASS
+ok  	github.com/grupo4-cc65/cc65-tf-compras-riesgo/internal/etl	1.014s
+=== RUN   TestAUC
+--- PASS: TestAUC (0.00s)
+=== RUN   TestForestAprende
+--- PASS: TestForestAprende (0.08s)
+=== RUN   TestForestDeterministico
+--- PASS: TestForestDeterministico (0.02s)
+=== RUN   TestLogRegAprende
+--- PASS: TestLogRegAprende (0.06s)
+=== RUN   TestGradienteDistribuidoIgualSecuencial
+--- PASS: TestGradienteDistribuidoIgualSecuencial (0.00s)
+=== RUN   TestParallelForCubreTodo
+--- PASS: TestParallelForCubreTodo (0.00s)
+PASS
+ok  	github.com/grupo4-cc65/cc65-tf-compras-riesgo/internal/ml	1.180s
+=== RUN   TestReadFile
+--- PASS: TestReadFile (0.01s)
+=== RUN   TestSplitAt
+--- PASS: TestSplitAt (0.00s)
+PASS
+ok  	github.com/grupo4-cc65/cc65-tf-compras-riesgo/internal/xlsx	1.020s
