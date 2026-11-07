@@ -1,0 +1,5 @@
+2026/11/07 06:22:27 CPU lógicas=2 GOMAXPROCS=2 archivos=9
+2026/11/07 06:23:09 [A] leídas=2324083 válidas=2320035 duplicados=3970 rechazos=map[monto_no_numerico_o_<=1:73 registro_antes_de_emision:5] en 41.51s
+2026/11/07 06:23:21 [A] features: N=2320035 D=47 positivos=171444 (7.39%) anuladas=63198 sobrecostoP95=111692 tope8UIT=19 en 8.98s
+2026/11/07 06:23:24 [A] EDA en 2.89s
+2026/11/07 06:23:35 [A] pipeline completo en 67.55s

@@ -1,0 +1,8 @@
+goos: linux
+goarch: amd64
+pkg: github.com/grupo4-cc65/cc65-tf-compras-riesgo/internal/ml
+cpu: Intel(R) Xeon(R) Processor @ 2.10GHz
+BenchmarkForest1Worker-2    	       5	   3182425 ns/op
+BenchmarkForest4Workers-2   	       5	   2171486 ns/op
+PASS
+ok  	github.com/grupo4-cc65/cc65-tf-compras-riesgo/internal/ml	0.072s
