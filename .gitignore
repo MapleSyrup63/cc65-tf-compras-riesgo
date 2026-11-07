@@ -1,0 +1,9 @@
+# datos pesados (se descargan de datosabiertos.gob.pe; ver README)
+data/raw/
+data/csv/
+data/processed/
+# binarios y modelos grandes
+bin/
+models/*.json
+*.out
+.DS_Store
