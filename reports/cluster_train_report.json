@@ -1,0 +1,128 @@
+{
+  "dataset": {
+    "D": 47,
+    "N": 2320035,
+    "test": 463800,
+    "train": 1670612,
+    "val": 185623
+  },
+  "finalizado": "2026-11-21T07:21:24.123827461Z",
+  "logistic_regression": {
+    "evaluacion": {
+      "umbral": 0.6800000000000004,
+      "test": {
+        "roc_auc": 0.9073718753322548,
+        "pr_auc_average_precision": 0.6010843609181835,
+        "umbral": 0.6800000000000004,
+        "accuracy": 0.9325485122897801,
+        "precision": 0.5351164224403661,
+        "recall": 0.6589966711440752,
+        "f1": 0.5906307249411149,
+        "tp": 22568,
+        "fp": 19606,
+        "tn": 409948,
+        "fn": 11678,
+        "recall_anuladas": 0.4891891891891892,
+        "recall_sobrecosto": 0.7628164981658764
+      },
+      "auc_solo_anulaciones": 0.7784727598429666
+    },
+    "loss_por_epoca": [
+      0.8046658159563664,
+      0.7454080210275055,
+      0.7424462703927296,
+      0.7441929291777142
+    ],
+    "segundos": 2.527629112,
+    "tareas": [
+      {
+        "tarea": 0,
+        "nodo": "node1:9000",
+        "items": 1088,
+        "filas_shard": 556871,
+        "segundos_nodo": 1.8843412440000007,
+        "segundos_total": 2.1867468699999963,
+        "reasignaciones": 0
+      },
+      {
+        "tarea": 1,
+        "nodo": "node2:9000",
+        "items": 1088,
+        "filas_shard": 556871,
+        "segundos_nodo": 1.906833141999999,
+        "segundos_total": 2.193104701999999,
+        "reasignaciones": 0
+      },
+      {
+        "tarea": 2,
+        "nodo": "node3:9000",
+        "items": 1088,
+        "filas_shard": 556871,
+        "segundos_nodo": 1.8404040179999974,
+        "segundos_total": 2.1572233960000022,
+        "reasignaciones": 0
+      }
+    ]
+  },
+  "nodos": 3,
+  "parametros": {
+    "trees": 60,
+    "depth": 14,
+    "sample": 250000,
+    "epochs": 4,
+    "batch": 2048,
+    "shards": 0
+  },
+  "random_forest": {
+    "evaluacion": {
+      "umbral": 0.3200000000000001,
+      "test": {
+        "roc_auc": 0.9538053923243204,
+        "pr_auc_average_precision": 0.8288023889419696,
+        "umbral": 0.3200000000000001,
+        "accuracy": 0.9667097887020267,
+        "precision": 0.7974315176820396,
+        "recall": 0.7361443672253694,
+        "f1": 0.7655633161251137,
+        "tp": 25210,
+        "fp": 6404,
+        "tn": 423150,
+        "fn": 9036,
+        "recall_anuladas": 0.4235294117647059,
+        "recall_sobrecosto": 0.9184038650800751
+      },
+      "auc_solo_anulaciones": 0.8483234723856586
+    },
+    "segundos": 6.983512185,
+    "tareas": [
+      {
+        "tarea": 0,
+        "nodo": "node1:9000",
+        "items": 20,
+        "filas_shard": 556871,
+        "segundos_nodo": 6.905719263,
+        "segundos_total": 6.911449812,
+        "reasignaciones": 0
+      },
+      {
+        "tarea": 1,
+        "nodo": "node2:9000",
+        "items": 20,
+        "filas_shard": 556871,
+        "segundos_nodo": 6.976211275,
+        "segundos_total": 6.983025464,
+        "reasignaciones": 0
+      },
+      {
+        "tarea": 2,
+        "nodo": "node3:9000",
+        "items": 20,
+        "filas_shard": 556870,
+        "segundos_nodo": 6.859092318,
+        "segundos_total": 6.865380574,
+        "reasignaciones": 0
+      }
+    ]
+  },
+  "total_segundos": 10.585909126
+}

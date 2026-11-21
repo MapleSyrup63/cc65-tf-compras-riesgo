@@ -1,0 +1,12 @@
+digraph P {
+  rankdir=TB; fontname="Helvetica"; node [fontname="Helvetica", fontsize=10, shape=box, style="rounded,filled", fillcolor="#ffffff", color="#52514e"]; edge [fontname="Helvetica", fontsize=9, color="#52514e"];
+  label="Entrenamiento distribuido: mensajes coordinador ↔ nodos (gob sobre TCP, solicitud/respuesta)"; labelloc=t; fontsize=13;
+  a [label="POST /api/v1/train  (admin, JWT)", fillcolor="#eef4fc"];
+  b [label="1. SCALER\ncada nodo: Σx y Σx² de su shard\ncoordinador: media y desviación (reduce)", fillcolor="#e3f6ee"];
+  c [label="2. TRAIN_TREES (en paralelo, 1 por shard)\nnodo: bagging con goroutines locales\ncoordinador: concatena en orden de shard (determinístico)", fillcolor="#e3f6ee"];
+  d [label="3. GRADIENT × pasos (barrera por paso)\ncoordinador envía pesos → nodos devuelven gradiente\ncoordinador suma y actualiza con Adam", fillcolor="#e3f6ee"];
+  e [label="4. EVAL (en paralelo)\ncada nodo puntúa su porción de validación y prueba\ncoordinador: umbral F1 + AUC/AP", fillcolor="#e3f6ee"];
+  f [label="5. Guarda models/*.json (rename atómico)\nrecarga el modelo con atomic.Pointer\n/predict usa el modelo nuevo sin reiniciar", fillcolor="#fdf3e0"];
+  x [label="Nodo caído → la tarea se reasigna al siguiente nodo\n(todos tienen el dataset y derivan los mismos shards)", shape=note, fillcolor="#fdeaea"];
+  a -> b -> c -> d -> e -> f; c -> x [style=dashed, arrowhead=none]; d -> x [style=dashed, arrowhead=none];
+}
