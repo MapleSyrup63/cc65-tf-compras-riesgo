@@ -1,0 +1,7 @@
+2026/11/07 01:20:53 CPU lógicas=2 GOMAXPROCS=2 archivos=1
+2026/11/07 01:21:15 [A] leídas=186951 válidas=186822 duplicados=123 rechazos=map[monto_no_numerico_o_<=1:6] en 22.07s
+2026/11/07 01:21:17 [A] features: N=186822 D=47 positivos=19500 (10.44%) anuladas=10857 sobrecostoP95=9312 tope8UIT=0 en 1.90s
+2026/11/07 01:21:18 [A] EDA en 0.41s
+escrito /tmp/oneout/ordenes_limpias.csv
+escrito data/sample/ordenes_muestra.csv
+2026/11/07 01:21:23 [A] pipeline completo en 30.49s

@@ -1,0 +1,247 @@
+openapi: 3.0.3
+info:
+  title: RiesgoGo API
+  version: 0.4.0
+  description: |
+    Coordinador REST del sistema RiesgoGo (CC65 Programación Concurrente y Distribuida, caso 4:
+    riesgo en compras públicas). Autenticación JWT (HS256). Coordina el clúster de nodos ML por TCP,
+    persiste en MongoDB y usa Redis como caché.
+    Todas las respuestas incluyen el encabezado `X-Latency-Ms` con el tiempo de servicio.
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: Autenticación
+  - name: Predicción
+  - name: Clúster
+  - name: Entrenamiento
+  - name: Datos
+  - name: Operación
+security:
+  - bearerAuth: []
+paths:
+  /api/v1/health:
+    get:
+      tags: [Operación]
+      summary: Estado del servicio, MongoDB, Redis y nodos
+      security: []
+      responses:
+        '200':
+          description: Estado (`ok` o `degradado`)
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Health' }
+  /api/v1/auth/login:
+    post:
+      tags: [Autenticación]
+      summary: Iniciar sesión y obtener un JWT
+      description: Máximo 10 intentos por minuto por IP (429 al excederlo).
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/LoginRequest' }
+            example: { usuario: admin, password: admin123 }
+      responses:
+        '200':
+          description: Token emitido
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/LoginResponse' }
+        '401': { $ref: '#/components/responses/Error' }
+        '429': { $ref: '#/components/responses/Error' }
+  /api/v1/me:
+    get:
+      tags: [Autenticación]
+      summary: Usuario del token
+      responses:
+        '200': { description: Usuario y rol }
+        '401': { $ref: '#/components/responses/Error' }
+  /api/v1/model:
+    get:
+      tags: [Predicción]
+      summary: Modelo cargado, variables, umbrales y métricas de prueba
+      responses:
+        '200': { description: Información del modelo }
+        '503': { $ref: '#/components/responses/Error' }
+  /api/v1/predict:
+    post:
+      tags: [Predicción]
+      summary: Riesgo de una orden de compra
+      description: |
+        Las variables no enviadas toman la media del entrenamiento. `monto_pen` es un atajo que
+        calcula `log_monto_pen`. Objetivo de rendimiento: respuesta en menos de 100 ms.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/PredictRequest' }
+            example:
+              monto_pen: 43500
+              features: { tc_hasta_8uit: 1, cerca_tope_8uit: 1, obj_servicios: 1, es_orden_compra: 0 }
+      responses:
+        '200':
+          description: Puntajes y nivel de riesgo
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/PredictResponse' }
+        '400': { $ref: '#/components/responses/Error' }
+        '401': { $ref: '#/components/responses/Error' }
+        '503': { $ref: '#/components/responses/Error' }
+  /api/v1/predict/batch:
+    post:
+      tags: [Predicción]
+      summary: Hasta 1,000 predicciones en una sola llamada (se calculan en paralelo)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [items]
+              properties:
+                items:
+                  type: array
+                  maxItems: 1000
+                  items: { $ref: '#/components/schemas/PredictRequest' }
+      responses:
+        '200': { description: Resultados en el mismo orden }
+        '400': { $ref: '#/components/responses/Error' }
+  /api/v1/predictions:
+    get:
+      tags: [Predicción]
+      summary: Historial de predicciones (MongoDB)
+      parameters:
+        - { name: limit, in: query, schema: { type: integer, default: 50, maximum: 500 } }
+        - { name: todos, in: query, description: Solo administrador, schema: { type: boolean } }
+      responses:
+        '200': { description: Predicciones más recientes }
+  /api/v1/ordenes:
+    get:
+      tags: [Datos]
+      summary: Órdenes de la muestra (MongoDB, colección ordenes_muestra)
+      parameters:
+        - { name: departamento, in: query, schema: { type: string } }
+        - { name: riesgo, in: query, schema: { type: boolean } }
+        - { name: limit, in: query, schema: { type: integer, default: 50, maximum: 500 } }
+        - { name: pagina, in: query, schema: { type: integer, default: 1 } }
+      responses:
+        '200': { description: Total y página de órdenes }
+  /api/v1/cluster:
+    get:
+      tags: [Clúster]
+      summary: Estado de los nodos ML (latido y métricas)
+      description: "La respuesta se cachea 3 s en Redis (`X-Cache: HIT`)."
+      responses:
+        '200': { description: Nodos, salud, latencia, CPU, memoria }
+        '503': { $ref: '#/components/responses/Error' }
+  /api/v1/cluster/history:
+    get:
+      tags: [Clúster]
+      summary: Histórico de métricas de nodos (solo administrador)
+      parameters:
+        - { name: limit, in: query, schema: { type: integer, default: 100, maximum: 1000 } }
+      responses:
+        '200': { description: Muestras guardadas en MongoDB }
+        '403': { $ref: '#/components/responses/Error' }
+  /api/v1/train:
+    post:
+      tags: [Entrenamiento]
+      summary: Entrenar RF + regresión logística en el clúster (solo administrador)
+      description: Un entrenamiento a la vez (409 si hay otro en curso). Al terminar, el modelo se recarga sin reiniciar.
+      requestBody:
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/TrainRequest' }
+            example: { trees: 60, depth: 14, epochs: 4 }
+      responses:
+        '202': { description: Entrenamiento iniciado }
+        '400': { $ref: '#/components/responses/Error' }
+        '403': { $ref: '#/components/responses/Error' }
+        '409': { $ref: '#/components/responses/Error' }
+    get:
+      tags: [Entrenamiento]
+      summary: Entrenamientos recientes
+      responses:
+        '200': { description: Lista }
+  /api/v1/train/{id}:
+    get:
+      tags: [Entrenamiento]
+      summary: Estado, registro y reparto por nodo de un entrenamiento
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      responses:
+        '200': { description: Entrenamiento }
+        '404': { $ref: '#/components/responses/Error' }
+  /api/v1/metrics:
+    get:
+      tags: [Operación]
+      summary: Latencias por ruta (p50, p95, p99), caché y conteos de la base de datos
+      responses:
+        '200': { description: Métricas de la API }
+components:
+  securitySchemes:
+    bearerAuth: { type: http, scheme: bearer, bearerFormat: JWT }
+  responses:
+    Error:
+      description: Error
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+  schemas:
+    Error:
+      type: object
+      properties: { error: { type: string } }
+    Health:
+      type: object
+      properties:
+        estado: { type: string, enum: [ok, degradado] }
+        mongodb: { type: string }
+        redis: { type: string }
+        nodos_sanos: { type: integer }
+        nodos_total: { type: integer }
+        modelo_cargado: { type: boolean }
+        uptime_seg: { type: number }
+    LoginRequest:
+      type: object
+      required: [usuario, password]
+      properties:
+        usuario: { type: string }
+        password: { type: string, format: password }
+    LoginResponse:
+      type: object
+      properties:
+        token: { type: string }
+        tipo: { type: string, example: Bearer }
+        expira: { type: string, format: date-time }
+        usuario: { type: string }
+        rol: { type: string, enum: [admin, analista] }
+    PredictRequest:
+      type: object
+      properties:
+        monto_pen: { type: number, minimum: 0, description: Monto en soles }
+        features:
+          type: object
+          additionalProperties: { type: number }
+          description: Variables del modelo por nombre (ver GET /api/v1/model)
+    PredictResponse:
+      type: object
+      properties:
+        score_rf: { type: number }
+        score_lr: { type: number }
+        riesgo: { type: boolean }
+        nivel: { type: string, enum: [bajo, medio, alto] }
+        umbral_rf: { type: number }
+        umbral_lr: { type: number }
+        cache: { type: boolean }
+        latencia_ms: { type: number }
+        modelo: { type: string }
+    TrainRequest:
+      type: object
+      properties:
+        trees: { type: integer, minimum: 1, maximum: 500 }
+        depth: { type: integer, minimum: 1, maximum: 24 }
+        sample: { type: integer, minimum: 1000 }
+        epochs: { type: integer, minimum: 1, maximum: 50 }
+        batch: { type: integer, minimum: 16, maximum: 65536 }
+        shards: { type: integer, minimum: 0 }

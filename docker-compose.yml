@@ -1,0 +1,136 @@
+# RiesgoGo — PC4: clúster de 3 nodos ML (TCP) + API coordinadora + MongoDB + Redis.
+#
+#   docker compose build api              # construye la imagen única (la comparten nodos, API y herramientas)
+#   docker compose up -d                  # levanta todo (los nodos tardan ~30 s en cargar el dataset)
+#   docker compose ps                     # estado y salud
+#   docker compose --profile tools run --rm seed     # carga la muestra de órdenes en MongoDB
+#   docker compose --profile etl up loader trainer   # pipeline de la PC3 (opcional)
+#
+# Requiere data/processed/dataset.bin (lo genera el loader de la PC3).
+
+x-app: &app
+  image: cc65-riesgogo:pc4
+  pull_policy: never
+  networks: [riesgo_net]
+
+services:
+  mongodb:
+    image: mongo:7
+    container_name: riesgo-mongodb
+    networks: [riesgo_net]
+    ports: ["127.0.0.1:27017:27017"]
+    volumes: [mongo_data:/data/db]
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: riesgo-redis
+    networks: [riesgo_net]
+    ports: ["127.0.0.1:6379:6379"]
+    command: ["redis-server", "--save", "", "--maxmemory", "256mb", "--maxmemory-policy", "allkeys-lru"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  # ---- clúster de nodos ML: cada uno carga el dataset (solo lectura) y atiende tareas por TCP :9000
+  node1: &node
+    <<: *app
+    container_name: riesgo-node1
+    command: ["/app/bin/node", "-id", "nodo1", "-listen", ":9000", "-data", "/app/data/processed/dataset.bin", "-local-workers", "4"]
+    volumes: ["./data/processed:/app/data/processed:ro"]
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z localhost 9000"]
+      interval: 5s
+      timeout: 3s
+      retries: 60
+      start_period: 20s
+    deploy:
+      resources:
+        limits: { memory: 2g }
+    restart: unless-stopped
+  node2:
+    <<: *node
+    container_name: riesgo-node2
+    command: ["/app/bin/node", "-id", "nodo2", "-listen", ":9000", "-data", "/app/data/processed/dataset.bin", "-local-workers", "4"]
+  node3:
+    <<: *node
+    container_name: riesgo-node3
+    command: ["/app/bin/node", "-id", "nodo3", "-listen", ":9000", "-data", "/app/data/processed/dataset.bin", "-local-workers", "4"]
+
+  # ---- API coordinadora (REST + JWT + Swagger en /docs)
+  api:
+    <<: *app
+    build: .          # única construcción: los demás servicios reutilizan esta imagen
+    container_name: riesgo-api
+    command: ["/app/bin/api"]
+    ports: ["8080:8080"]
+    environment:
+      API_ADDR: ":8080"
+      JWT_SECRET: "${JWT_SECRET:-cambia-esta-clave-larga-2026}"
+      NODES: "node1:9000,node2:9000,node3:9000"
+      MONGO_URI: "mongodb://mongodb:27017"
+      MONGO_DB: "riesgogo"
+      REDIS_ADDR: "redis:6379"
+      MODELS_DIR: "/app/models"
+      REPORTS_DIR: "/app/reports"
+      CORS_ORIGINS: "http://localhost:5173,http://localhost:3000"
+      ADMIN_USER: "admin"
+      ADMIN_PASS: "${ADMIN_PASS:-admin123}"
+      ANALISTA_USER: "analista"
+      ANALISTA_PASS: "${ANALISTA_PASS:-analista123}"
+    volumes:
+      - ./models:/app/models
+      - ./reports:/app/reports
+    depends_on:
+      mongodb: { condition: service_healthy }
+      redis: { condition: service_healthy }
+      node1: { condition: service_started }
+      node2: { condition: service_started }
+      node3: { condition: service_started }
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/api/v1/health >/dev/null || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+
+  # ---- utilidades (perfil "tools")
+  seed:
+    <<: *app
+    profiles: [tools]
+    command: ["/app/bin/seed", "-csv", "/app/data/sample/ordenes_muestra.csv", "-mongo", "mongodb://mongodb:27017"]
+    volumes: ["./data/sample:/app/data/sample:ro"]
+    depends_on:
+      mongodb: { condition: service_healthy }
+
+  # ---- pipeline de la PC3 (perfil "etl")
+  loader:
+    <<: *app
+    profiles: [etl]
+    command: ["/app/bin/loader", "-in", "/app/data/raw", "-out", "/app/data/processed"]
+    volumes: ["./data:/app/data", "./reports:/app/reports"]
+    deploy:
+      resources:
+        limits: { cpus: "4", memory: 6g }
+  trainer:
+    <<: *app
+    profiles: [etl]
+    depends_on:
+      loader: { condition: service_completed_successfully }
+    command: ["/app/bin/train", "-data", "/app/data/processed/dataset.bin", "-trees", "100", "-depth", "16", "-epochs", "5"]
+    volumes: ["./data:/app/data", "./reports:/app/reports", "./models:/app/models"]
+
+networks:
+  riesgo_net:
+    name: riesgo_net
+
+volumes:
+  mongo_data:

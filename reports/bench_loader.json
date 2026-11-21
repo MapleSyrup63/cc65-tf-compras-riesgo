@@ -1,0 +1,40 @@
+{
+  "cpu": 16,
+  "resultados": [
+    {
+      "workers": 1,
+      "segundos": 36.5609847,
+      "filas": 2324083,
+      "filas_por_segundo": 63567.297737470406,
+      "speedup": 1
+    },
+    {
+      "workers": 2,
+      "segundos": 14.8143721,
+      "filas": 2324083,
+      "filas_por_segundo": 156880.29059294387,
+      "speedup": 2.4679402173244993
+    },
+    {
+      "workers": 4,
+      "segundos": 9.7128963,
+      "filas": 2324083,
+      "filas_por_segundo": 239278.06168382545,
+      "speedup": 3.7641691593062716
+    },
+    {
+      "workers": 8,
+      "segundos": 7.8178353000000005,
+      "filas": 2324083,
+      "filas_por_segundo": 297279.6062869219,
+      "speedup": 4.676612297012704
+    },
+    {
+      "workers": 16,
+      "segundos": 7.8701803,
+      "filas": 2324083,
+      "filas_por_segundo": 295302.3833520053,
+      "speedup": 4.6455078926209605
+    }
+  ]
+}

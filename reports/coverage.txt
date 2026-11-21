@@ -1,0 +1,7 @@
+	github.com/grupo4-cc65/cc65-tf-compras-riesgo/cmd/loader		coverage: 0.0% of statements
+	github.com/grupo4-cc65/cc65-tf-compras-riesgo/cmd/train		coverage: 0.0% of statements
+	github.com/grupo4-cc65/cc65-tf-compras-riesgo/cmd/xlsx2csv		coverage: 0.0% of statements
+	github.com/grupo4-cc65/cc65-tf-compras-riesgo/internal/eda		coverage: 0.0% of statements
+ok  	github.com/grupo4-cc65/cc65-tf-compras-riesgo/internal/etl	0.003s	coverage: 20.2% of statements
+ok  	github.com/grupo4-cc65/cc65-tf-compras-riesgo/internal/ml	0.042s	coverage: 75.4% of statements
+ok  	github.com/grupo4-cc65/cc65-tf-compras-riesgo/internal/xlsx	0.005s	coverage: 88.8% of statements

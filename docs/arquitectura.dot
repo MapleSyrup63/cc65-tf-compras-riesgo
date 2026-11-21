@@ -1,0 +1,23 @@
+digraph G {
+  rankdir=LR; fontname="Helvetica"; node [fontname="Helvetica", fontsize=11, shape=box, style="rounded,filled", color="#52514e", fillcolor="#ffffff"]; edge [fontname="Helvetica", fontsize=9, color="#52514e"];
+  label="Arquitectura de la solución (verde = implementado en PC3 · gris = PC4/TB2)"; labelloc=t; fontsize=14;
+  src [label="datosabiertos.gob.pe\nOSCE / SEACE\n9 XLSX · 2.32 M órdenes", shape=folder, fillcolor="#eef4fc"];
+  subgraph cluster_a { label="Parte A — Cargador concurrente (Go)"; style="rounded"; color="#1baf7a";
+    rd [label="Lector XLSX\n(zip+XML por bloques)\nfan-out por archivo", fillcolor="#e3f6ee"];
+    cl [label="Workers de limpieza\n(goroutines + channels)", fillcolor="#e3f6ee"];
+    ag [label="Agregador\n(dedup, estadísticas)", fillcolor="#e3f6ee"];
+    fe [label="Features + etiqueta\n(map-reduce)", fillcolor="#e3f6ee"]; }
+  subgraph cluster_b { label="Parte B — Entrenamiento paralelo (Go)"; style="rounded"; color="#1baf7a";
+    co [label="Coordinador\n(sharding, all-reduce,\nensamble)", fillcolor="#e3f6ee"];
+    w1 [label="Worker 1", fillcolor="#e3f6ee"]; w2 [label="Worker 2", fillcolor="#e3f6ee"]; wn [label="Worker N", fillcolor="#e3f6ee"]; }
+  subgraph cluster_c { label="PC4 / TB2"; style="rounded,dashed"; color="#8a8984"; fontcolor="#52514e";
+    api [label="API Coordinadora\nREST + WebSocket + JWT", fillcolor="#f2f1ed", fontcolor="#52514e"];
+    nodes [label="Clúster nodos ML\n(contenedores, TCP)", fillcolor="#f2f1ed", fontcolor="#52514e"];
+    mongo [label="MongoDB", shape=cylinder, fillcolor="#f2f1ed", fontcolor="#52514e"];
+    redis [label="Redis", shape=cylinder, fillcolor="#f2f1ed", fontcolor="#52514e"];
+    spa [label="SPA (React/Angular)\nDashboard de impacto", fillcolor="#f2f1ed", fontcolor="#52514e"]; }
+  src -> rd -> cl -> ag -> fe; fe -> co [label="dataset.bin"];
+  co -> w1 [dir=both]; co -> w2 [dir=both]; co -> wn [dir=both];
+  co -> api [style=dashed, label="modelos JSON"]; api -> nodes [style=dashed, dir=both, label="TCP"];
+  api -> mongo [style=dashed]; api -> redis [style=dashed]; spa -> api [style=dashed, dir=both, label="HTTP/WS"];
+}

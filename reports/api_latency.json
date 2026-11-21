@@ -1,0 +1,23 @@
+{
+  "cliente_ms": {
+    "max": 143.269,
+    "media": 3.4820905999999967,
+    "p50": 2.734,
+    "p95": 5.597,
+    "p99": 26.589
+  },
+  "concurrencia": 32,
+  "cumple_menor_100ms_p99": true,
+  "errores_red": 0,
+  "peticiones": 5000,
+  "req_por_seg": 9045.690506403083,
+  "respuestas_no_200": 0,
+  "segundos": 0.5527494,
+  "servidor_ms": {
+    "max": 42.643,
+    "media": 0.9752798000000003,
+    "p50": 0.637,
+    "p95": 2.065,
+    "p99": 3.538
+  }
+}

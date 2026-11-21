@@ -1,0 +1,717 @@
+{
+  "total": {
+    "ordenes": 2320035,
+    "monto_pen": 32437398299.008995,
+    "anuladas": 63198,
+    "sobrecosto": 111692,
+    "riesgo": 171444,
+    "monto_riesgo_pen": 14664214180.879929
+  },
+  "por_mes_emision": {
+    "01-ENE": {
+      "ordenes": 227809,
+      "monto_pen": 4729082033.101167,
+      "anuladas": 3262,
+      "sobrecosto": 12573,
+      "riesgo": 15635,
+      "monto_riesgo_pen": 2633848337.608902
+    },
+    "02-FEB": {
+      "ordenes": 294872,
+      "monto_pen": 5330084104.904117,
+      "anuladas": 7094,
+      "sobrecosto": 15391,
+      "riesgo": 22107,
+      "monto_riesgo_pen": 2772777837.5957413
+    },
+    "03-MAR": {
+      "ordenes": 308063,
+      "monto_pen": 3839897379.4696245,
+      "anuladas": 9032,
+      "sobrecosto": 15344,
+      "riesgo": 23809,
+      "monto_riesgo_pen": 1603202552.1067007
+    },
+    "04-ABR": {
+      "ordenes": 293196,
+      "monto_pen": 3385732333.923961,
+      "anuladas": 8045,
+      "sobrecosto": 13608,
+      "riesgo": 21258,
+      "monto_riesgo_pen": 1296364841.2029986
+    },
+    "05-MAY": {
+      "ordenes": 269463,
+      "monto_pen": 3283816599.586243,
+      "anuladas": 6838,
+      "sobrecosto": 12760,
+      "riesgo": 19217,
+      "monto_riesgo_pen": 1327552791.8154013
+    },
+    "06-JUN": {
+      "ordenes": 251666,
+      "monto_pen": 3087801393.9126606,
+      "anuladas": 7221,
+      "sobrecosto": 11422,
+      "riesgo": 18189,
+      "monto_riesgo_pen": 1277097158.0907998
+    },
+    "07-JUL": {
+      "ordenes": 279251,
+      "monto_pen": 3793630355.8100915,
+      "anuladas": 5710,
+      "sobrecosto": 12221,
+      "riesgo": 17720,
+      "monto_riesgo_pen": 1635399572.652391
+    },
+    "08-AGO": {
+      "ordenes": 208893,
+      "monto_pen": 2608035268.03215,
+      "anuladas": 5139,
+      "sobrecosto": 8771,
+      "riesgo": 13699,
+      "monto_riesgo_pen": 1113672814.8893
+    },
+    "09-SEP": {
+      "ordenes": 186822,
+      "monto_pen": 2379318830.268968,
+      "anuladas": 10857,
+      "sobrecosto": 9602,
+      "riesgo": 19810,
+      "monto_riesgo_pen": 1004298274.9176987
+    }
+  },
+  "por_estado": {
+    "ANULADA": {
+      "ordenes": 63198,
+      "monto_pen": 915549180.7044402,
+      "anuladas": 63198,
+      "sobrecosto": 3446,
+      "riesgo": 63198,
+      "monto_riesgo_pen": 915549180.7044402
+    },
+    "COMPROMETIDA": {
+      "ordenes": 1369894,
+      "monto_pen": 20736466402.278698,
+      "anuladas": 0,
+      "sobrecosto": 71752,
+      "riesgo": 71752,
+      "monto_riesgo_pen": 9615229405.814598
+    },
+    "DEVENGADA": {
+      "ordenes": 546858,
+      "monto_pen": 5728574346.9332,
+      "anuladas": 0,
+      "sobrecosto": 17424,
+      "riesgo": 17424,
+      "monto_riesgo_pen": 1982221917.9726002
+    },
+    "EMITIDA": {
+      "ordenes": 340085,
+      "monto_pen": 5056808369.092648,
+      "anuladas": 0,
+      "sobrecosto": 19070,
+      "riesgo": 19070,
+      "monto_riesgo_pen": 2151213676.3882904
+    }
+  },
+  "por_departamento": {
+    "AMAZONAS": {
+      "ordenes": 35478,
+      "monto_pen": 324871103.11649996,
+      "anuladas": 741,
+      "sobrecosto": 1302,
+      "riesgo": 2005,
+      "monto_riesgo_pen": 78281598.82139999
+    },
+    "ANCASH": {
+      "ordenes": 67411,
+      "monto_pen": 516777640.81600004,
+      "anuladas": 1552,
+      "sobrecosto": 1423,
+      "riesgo": 2930,
+      "monto_riesgo_pen": 118298618.09
+    },
+    "APURIMAC": {
+      "ordenes": 55785,
+      "monto_pen": 473928667.81000006,
+      "anuladas": 1076,
+      "sobrecosto": 2020,
+      "riesgo": 3046,
+      "monto_riesgo_pen": 121570595.77
+    },
+    "AREQUIPA": {
+      "ordenes": 75945,
+      "monto_pen": 1004707671.7729998,
+      "anuladas": 2612,
+      "sobrecosto": 2994,
+      "riesgo": 5510,
+      "monto_riesgo_pen": 456555325.0821001
+    },
+    "AYACUCHO": {
+      "ordenes": 61500,
+      "monto_pen": 500116234.39999986,
+      "anuladas": 1034,
+      "sobrecosto": 2071,
+      "riesgo": 3060,
+      "monto_riesgo_pen": 128722147.15000004
+    },
+    "CAJAMARCA": {
+      "ordenes": 59662,
+      "monto_pen": 571472474.1078,
+      "anuladas": 1644,
+      "sobrecosto": 2170,
+      "riesgo": 3764,
+      "monto_riesgo_pen": 156651085.4619
+    },
+    "CALLAO": {
+      "ordenes": 75225,
+      "monto_pen": 835285258.0769998,
+      "anuladas": 802,
+      "sobrecosto": 3768,
+      "riesgo": 4477,
+      "monto_riesgo_pen": 376867025.97499985
+    },
+    "CUSCO": {
+      "ordenes": 142504,
+      "monto_pen": 1528060929.5649993,
+      "anuladas": 3764,
+      "sobrecosto": 5540,
+      "riesgo": 8961,
+      "monto_riesgo_pen": 461596848.47269994
+    },
+    "HUANCAVELICA": {
+      "ordenes": 39476,
+      "monto_pen": 280041332.46999997,
+      "anuladas": 800,
+      "sobrecosto": 550,
+      "riesgo": 1317,
+      "monto_riesgo_pen": 71242238.35000001
+    },
+    "HUANUCO": {
+      "ordenes": 58828,
+      "monto_pen": 500365209.5735,
+      "anuladas": 997,
+      "sobrecosto": 1996,
+      "riesgo": 2923,
+      "monto_riesgo_pen": 121943044.30140004
+    },
+    "ICA": {
+      "ordenes": 52357,
+      "monto_pen": 675949127.5279999,
+      "anuladas": 626,
+      "sobrecosto": 1917,
+      "riesgo": 2517,
+      "monto_riesgo_pen": 308906719.17
+    },
+    "JUNIN": {
+      "ordenes": 70267,
+      "monto_pen": 709041515.2559998,
+      "anuladas": 2513,
+      "sobrecosto": 2356,
+      "riesgo": 4796,
+      "monto_riesgo_pen": 228556950.22999996
+    },
+    "LA LIBERTAD": {
+      "ordenes": 70091,
+      "monto_pen": 834236536.8489299,
+      "anuladas": 1784,
+      "sobrecosto": 2821,
+      "riesgo": 4540,
+      "monto_riesgo_pen": 285391368.4665399
+    },
+    "LAMBAYEQUE": {
+      "ordenes": 37107,
+      "monto_pen": 615328150.0555001,
+      "anuladas": 2087,
+      "sobrecosto": 2002,
+      "riesgo": 4037,
+      "monto_riesgo_pen": 278287709.0735
+    },
+    "LIMA": {
+      "ordenes": 885372,
+      "monto_pen": 18569161562.428196,
+      "anuladas": 19033,
+      "sobrecosto": 60822,
+      "riesgo": 78346,
+      "monto_riesgo_pen": 9942775089.978191
+    },
+    "LORETO": {
+      "ordenes": 78268,
+      "monto_pen": 786597516.2132599,
+      "anuladas": 10491,
+      "sobrecosto": 4122,
+      "riesgo": 14208,
+      "monto_riesgo_pen": 336189900.82260007
+    },
+    "MADRE DE DIOS": {
+      "ordenes": 10738,
+      "monto_pen": 109622186.23599999,
+      "anuladas": 298,
+      "sobrecosto": 370,
+      "riesgo": 650,
+      "monto_riesgo_pen": 32033827.49
+    },
+    "MOQUEGUA": {
+      "ordenes": 54626,
+      "monto_pen": 454759181.5036999,
+      "anuladas": 3220,
+      "sobrecosto": 1518,
+      "riesgo": 4659,
+      "monto_riesgo_pen": 148774164.5816
+    },
+    "PASCO": {
+      "ordenes": 21026,
+      "monto_pen": 136385487.46460003,
+      "anuladas": 1005,
+      "sobrecosto": 504,
+      "riesgo": 1479,
+      "monto_riesgo_pen": 30678546.77
+    },
+    "PIURA": {
+      "ordenes": 93676,
+      "monto_pen": 796287968.5321999,
+      "anuladas": 1522,
+      "sobrecosto": 3268,
+      "riesgo": 4682,
+      "monto_riesgo_pen": 286145979.9189999
+    },
+    "PUNO": {
+      "ordenes": 75400,
+      "monto_pen": 644472209.6661003,
+      "anuladas": 885,
+      "sobrecosto": 1696,
+      "riesgo": 2545,
+      "monto_riesgo_pen": 197070036.2309
+    },
+    "SAN MARTIN": {
+      "ordenes": 66161,
+      "monto_pen": 610704072.93,
+      "anuladas": 1978,
+      "sobrecosto": 2254,
+      "riesgo": 4142,
+      "monto_riesgo_pen": 176405124.04
+    },
+    "TACNA": {
+      "ordenes": 72358,
+      "monto_pen": 458440808.8776999,
+      "anuladas": 1452,
+      "sobrecosto": 1729,
+      "riesgo": 3148,
+      "monto_riesgo_pen": 152901461.06310004
+    },
+    "TUMBES": {
+      "ordenes": 20130,
+      "monto_pen": 134702367.25,
+      "anuladas": 569,
+      "sobrecosto": 519,
+      "riesgo": 1066,
+      "monto_riesgo_pen": 47993242.71
+    },
+    "UCAYALI": {
+      "ordenes": 40644,
+      "monto_pen": 366083086.51,
+      "anuladas": 713,
+      "sobrecosto": 1960,
+      "riesgo": 2636,
+      "monto_riesgo_pen": 120375532.85999998
+    }
+  },
+  "por_rubro": {
+    "ALIMENTOS": {
+      "ordenes": 168074,
+      "monto_pen": 2567745372.371039,
+      "anuladas": 3613,
+      "sobrecosto": 7794,
+      "riesgo": 11180,
+      "monto_riesgo_pen": 1130798531.711
+    },
+    "COMBUSTIBLE": {
+      "ordenes": 46762,
+      "monto_pen": 650337378.2416003,
+      "anuladas": 1453,
+      "sobrecosto": 2348,
+      "riesgo": 3714,
+      "monto_riesgo_pen": 278014092.03370005
+    },
+    "CONSTRUCCION": {
+      "ordenes": 86726,
+      "monto_pen": 1951345289.8147998,
+      "anuladas": 2456,
+      "sobrecosto": 4353,
+      "riesgo": 6685,
+      "monto_riesgo_pen": 704713687.0599003
+    },
+    "CONSULTORIA": {
+      "ordenes": 28702,
+      "monto_pen": 910925643.3792902,
+      "anuladas": 730,
+      "sobrecosto": 1243,
+      "riesgo": 1941,
+      "monto_riesgo_pen": 277020153.73620003
+    },
+    "MANTENIMIENTO": {
+      "ordenes": 153163,
+      "monto_pen": 2162033333.6842394,
+      "anuladas": 3288,
+      "sobrecosto": 7720,
+      "riesgo": 10774,
+      "monto_riesgo_pen": 964581255.1834
+    },
+    "MATERIALES": {
+      "ordenes": 179042,
+      "monto_pen": 2880398273.9426894,
+      "anuladas": 5244,
+      "sobrecosto": 8988,
+      "riesgo": 13928,
+      "monto_riesgo_pen": 1421546071.3529997
+    },
+    "OTROS": {
+      "ordenes": 805804,
+      "monto_pen": 10342332303.175991,
+      "anuladas": 22017,
+      "sobrecosto": 38374,
+      "riesgo": 59186,
+      "monto_riesgo_pen": 4687054237.15623
+    },
+    "PERSONAL": {
+      "ordenes": 294965,
+      "monto_pen": 1833032258.9431999,
+      "anuladas": 9610,
+      "sobrecosto": 14417,
+      "riesgo": 23641,
+      "monto_riesgo_pen": 579185303.9166
+    },
+    "SALUD": {
+      "ordenes": 144788,
+      "monto_pen": 2028707377.5593996,
+      "anuladas": 4770,
+      "sobrecosto": 7076,
+      "riesgo": 11594,
+      "monto_riesgo_pen": 647629125.8158001
+    },
+    "SERV_GENERALES": {
+      "ordenes": 204981,
+      "monto_pen": 2816773856.69738,
+      "anuladas": 4819,
+      "sobrecosto": 8980,
+      "riesgo": 13541,
+      "monto_riesgo_pen": 1507437826.1743996
+    },
+    "TECNOLOGIA": {
+      "ordenes": 79968,
+      "monto_pen": 1923924772.453839,
+      "anuladas": 1967,
+      "sobrecosto": 4007,
+      "riesgo": 5844,
+      "monto_riesgo_pen": 1212551600.1181004
+    },
+    "TRANSPORTE_ALQUILER": {
+      "ordenes": 127060,
+      "monto_pen": 2369842438.7455206,
+      "anuladas": 3231,
+      "sobrecosto": 6392,
+      "riesgo": 9416,
+      "monto_riesgo_pen": 1253682296.6216004
+    }
+  },
+  "por_tipo_contratacion": {
+    "CATALOGO": {
+      "ordenes": 24583,
+      "monto_pen": 409030519.7774,
+      "anuladas": 596,
+      "sobrecosto": 1206,
+      "riesgo": 1767,
+      "monto_riesgo_pen": 282137242.714
+    },
+    "DIRECTA_OTROS": {
+      "ordenes": 21404,
+      "monto_pen": 2865070679.64319,
+      "anuladas": 519,
+      "sobrecosto": 1069,
+      "riesgo": 1556,
+      "monto_riesgo_pen": 2116745570.6985002
+    },
+    "HASTA_8UIT": {
+      "ordenes": 1897616,
+      "monto_pen": 14538815570.813538,
+      "anuladas": 52068,
+      "sobrecosto": 90877,
+      "riesgo": 140058,
+      "monto_riesgo_pen": 3667328923.046131
+    },
+    "PROCESO_SELECCION": {
+      "ordenes": 82688,
+      "monto_pen": 11356472679.489464,
+      "anuladas": 1916,
+      "sobrecosto": 4151,
+      "riesgo": 5947,
+      "monto_riesgo_pen": 6746329125.653298
+    },
+    "SERVICIO_PUBLICO": {
+      "ordenes": 24607,
+      "monto_pen": 559362904.0649999,
+      "anuladas": 587,
+      "sobrecosto": 1201,
+      "riesgo": 1760,
+      "monto_riesgo_pen": 369639689.90000004
+    },
+    "SIN_PROCESO": {
+      "ordenes": 269137,
+      "monto_pen": 2708645945.220402,
+      "anuladas": 7512,
+      "sobrecosto": 13188,
+      "riesgo": 20356,
+      "monto_riesgo_pen": 1482033628.868
+    }
+  },
+  "por_nivel_gobierno": {
+    "GOB_NACIONAL": {
+      "ordenes": 499349,
+      "monto_pen": 11865061652.75119,
+      "anuladas": 10714,
+      "sobrecosto": 44136,
+      "riesgo": 53765,
+      "monto_riesgo_pen": 6392898139.221231
+    },
+    "GOB_REGIONAL": {
+      "ordenes": 456017,
+      "monto_pen": 4800237627.888502,
+      "anuladas": 22338,
+      "sobrecosto": 19276,
+      "riesgo": 40823,
+      "monto_riesgo_pen": 1655461398.1527
+    },
+    "MUNI_DISTRITAL": {
+      "ordenes": 759757,
+      "monto_pen": 6333507394.616799,
+      "anuladas": 17453,
+      "sobrecosto": 20178,
+      "riesgo": 37085,
+      "monto_riesgo_pen": 2212670498.3619995
+    },
+    "MUNI_PROVINCIAL": {
+      "ordenes": 305878,
+      "monto_pen": 2966979326.198298,
+      "anuladas": 5011,
+      "sobrecosto": 9270,
+      "riesgo": 13898,
+      "monto_riesgo_pen": 1050210659.027
+    },
+    "SALUD": {
+      "ordenes": 200650,
+      "monto_pen": 5203972561.864201,
+      "anuladas": 5661,
+      "sobrecosto": 15347,
+      "riesgo": 20467,
+      "monto_riesgo_pen": 2774670624.136999
+    },
+    "UNIVERSIDAD": {
+      "ordenes": 98384,
+      "monto_pen": 1267639735.6899996,
+      "anuladas": 2021,
+      "sobrecosto": 3485,
+      "riesgo": 5406,
+      "monto_riesgo_pen": 578302861.9800001
+    }
+  },
+  "por_objeto": {
+    "BIENES": {
+      "ordenes": 496034,
+      "monto_pen": 9418390407.101637,
+      "anuladas": 16527,
+      "sobrecosto": 24967,
+      "riesgo": 40441,
+      "monto_riesgo_pen": 4339372247.517301
+    },
+    "CONSULTORIAS OBRAS": {
+      "ordenes": 5193,
+      "monto_pen": 443833642.2985,
+      "anuladas": 110,
+      "sobrecosto": 250,
+      "riesgo": 354,
+      "monto_riesgo_pen": 171023789.33159998
+    },
+    "SERVICIOS": {
+      "ordenes": 1818808,
+      "monto_pen": 22575174249.60886,
+      "anuladas": 46561,
+      "sobrecosto": 86475,
+      "riesgo": 130649,
+      "monto_riesgo_pen": 10153818144.03103
+    }
+  },
+  "por_tipo_contratista": {
+    "EMPRESA": {
+      "ordenes": 661326,
+      "monto_pen": 20797461821.367817,
+      "anuladas": 21486,
+      "sobrecosto": 58934,
+      "riesgo": 78285,
+      "monto_riesgo_pen": 11987553819.860132
+    },
+    "OTRO": {
+      "ordenes": 12099,
+      "monto_pen": 393996098.4622,
+      "anuladas": 283,
+      "sobrecosto": 964,
+      "riesgo": 1234,
+      "monto_riesgo_pen": 310002619.4591999
+    },
+    "PN": {
+      "ordenes": 1646610,
+      "monto_pen": 11245940379.178984,
+      "anuladas": 41429,
+      "sobrecosto": 51794,
+      "riesgo": 91925,
+      "monto_riesgo_pen": 2366657741.5605993
+    }
+  },
+  "hist_log10_monto": {
+    "10^0": 3095,
+    "10^1": 16553,
+    "10^2": 235410,
+    "10^3": 1516152,
+    "10^4": 525496,
+    "10^5": 20787,
+    "10^6": 2417,
+    "\u003e=10^7": 125
+  },
+  "percentiles_monto_pen": {
+    "p01": 108,
+    "p25": 1680,
+    "p50": 3630,
+    "p75": 9000,
+    "p90": 23800,
+    "p95": 38000,
+    "p99": 100160
+  },
+  "top_entidades_riesgo": [
+    {
+      "entidad": "SEGURO SOCIAL DE SALUD",
+      "departamento": "LIMA",
+      "ordenes": 86878,
+      "riesgo": 12387,
+      "tasa": 0.1425792490619029,
+      "monto_riesgo_pen": 1171547131.6279998
+    },
+    {
+      "entidad": "OFICINA NACIONAL DE PROCESOS ELECTORALES",
+      "departamento": "LIMA",
+      "ordenes": 11250,
+      "riesgo": 1200,
+      "tasa": 0.10666666666666667,
+      "monto_riesgo_pen": 651880115.8
+    },
+    {
+      "entidad": "CENTRO NACIONAL DE ABASTECIMIENTO DE RECURSOS ESTRATEGICOS EN SALUD",
+      "departamento": "LIMA",
+      "ordenes": 8349,
+      "riesgo": 534,
+      "tasa": 0.0639597556593604,
+      "monto_riesgo_pen": 539799042.64
+    },
+    {
+      "entidad": "FONDO INTANGIBLE SOLIDARIO DE SALUD",
+      "departamento": "LIMA",
+      "ordenes": 1028,
+      "riesgo": 391,
+      "tasa": 0.38035019455252916,
+      "monto_riesgo_pen": 364147568.14
+    },
+    {
+      "entidad": "PROGRAMA EDUCACION BASICA PARA TODOS UE 026",
+      "departamento": "LIMA",
+      "ordenes": 7923,
+      "riesgo": 682,
+      "tasa": 0.08607850561655939,
+      "monto_riesgo_pen": 309601541.78999996
+    },
+    {
+      "entidad": "MUNICIPALIDAD METROPOLITANA DE LIMA",
+      "departamento": "LIMA",
+      "ordenes": 17237,
+      "riesgo": 718,
+      "tasa": 0.0416545802633869,
+      "monto_riesgo_pen": 253136743.93
+    },
+    {
+      "entidad": "UNIVERSIDAD NACIONAL SAN AGUSTIN",
+      "departamento": "AREQUIPA",
+      "ordenes": 7933,
+      "riesgo": 243,
+      "tasa": 0.030631539140300014,
+      "monto_riesgo_pen": 253072611.03
+    },
+    {
+      "entidad": "REGISTRO NACIONAL DE IDENTIFICACION Y ESTADO CIVIL",
+      "departamento": "LIMA",
+      "ordenes": 5173,
+      "riesgo": 285,
+      "tasa": 0.055093756040982024,
+      "monto_riesgo_pen": 208438294.91
+    },
+    {
+      "entidad": "MUNICIPALIDAD DISTRITAL DE SAN JUAN DE LURIGANCHO",
+      "departamento": "LIMA",
+      "ordenes": 17544,
+      "riesgo": 2449,
+      "tasa": 0.13959188326493388,
+      "monto_riesgo_pen": 197065640.05999997
+    },
+    {
+      "entidad": "INSTITUTO PERUANO DEL DEPORTE",
+      "departamento": "LIMA",
+      "ordenes": 4981,
+      "riesgo": 799,
+      "tasa": 0.16040955631399317,
+      "monto_riesgo_pen": 180749188.27
+    },
+    {
+      "entidad": "JURADO NACIONAL DE ELECCIONES",
+      "departamento": "LIMA",
+      "ordenes": 12218,
+      "riesgo": 2622,
+      "tasa": 0.21460140775904404,
+      "monto_riesgo_pen": 173029947.7379
+    },
+    {
+      "entidad": "OFICINA DE NORMALIZACION PREVISIONAL",
+      "departamento": "LIMA",
+      "ordenes": 3298,
+      "riesgo": 384,
+      "tasa": 0.11643420254699818,
+      "monto_riesgo_pen": 163442118.07999998
+    },
+    {
+      "entidad": "MINISTERIO DE TRANSPORTES Y COMUNICACIONES",
+      "departamento": "LIMA",
+      "ordenes": 8162,
+      "riesgo": 1244,
+      "tasa": 0.1524136241117373,
+      "monto_riesgo_pen": 139633240.35
+    },
+    {
+      "entidad": "COMISION DE PROMOCION DEL PERU PARA LA EXPORTACION Y EL TURISMO - PROMPERU",
+      "departamento": "LIMA",
+      "ordenes": 4344,
+      "riesgo": 1084,
+      "tasa": 0.24953959484346225,
+      "monto_riesgo_pen": 133845044.64980003
+    },
+    {
+      "entidad": "AGENCIA DE PROMOCION DE LA INVERSION PRIVADA - PROINVERSION",
+      "departamento": "LIMA",
+      "ordenes": 1783,
+      "riesgo": 666,
+      "tasa": 0.3735277621985418,
+      "monto_riesgo_pen": 129120983.71500002
+    }
+  ],
+  "monto_vs_tope_8uit": {
+    "75-90%": 37639,
+    "90-100%": 55991,
+    "\u003c75%": 1803967,
+    "supera_tope": 19
+  }
+}

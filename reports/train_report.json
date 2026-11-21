@@ -1,0 +1,535 @@
+{
+  "cpu": 16,
+  "logistic_regression": {
+    "auc_solo_anulaciones": 0.7787375591656861,
+    "coeficientes": {
+      "cerca_tope_8uit": 0.5323923049332541,
+      "concentracion_contratista_en_entidad": 0.019032542655272742,
+      "contratista_empresa": 0.1249901517257803,
+      "contratista_es_entidad": 0.09042783444441416,
+      "contratista_otro": 0.009462065490741248,
+      "contratista_pn": -0.12475890239361069,
+      "dias_emision_a_registro": 0.039073039794857635,
+      "es_lima_callao": -0.009991164735018328,
+      "es_orden_compra": -0.06423868745983964,
+      "fin_de_semana": -0.023520434363256394,
+      "log_len_descripcion": -0.10186256800823784,
+      "log_monto_pen": 1.0963625709542781,
+      "log_n_entidades_contratista": 0.14632943542305688,
+      "log_n_ordenes_contratista": -0.15637270253376787,
+      "log_n_ordenes_entidad": -0.039380098748983655,
+      "mes_emision": 0.13274672928563042,
+      "moneda_extranjera": 0.006312250932339995,
+      "niv_gob_nacional": 0.1215862566648149,
+      "niv_gob_regional": 0.028495473603690168,
+      "niv_muni_distrital": -0.10507244198621102,
+      "niv_muni_provincial": -0.07666164010203584,
+      "niv_salud": 0.015861610590463465,
+      "niv_universidad": 0.002261649410812234,
+      "obj_bienes": -0.06423868745983964,
+      "obj_consultoria_obras": -0.0055837985611104386,
+      "obj_servicios": 0.06443711031343959,
+      "rubro_ALIMENTOS": -0.02821760390890973,
+      "rubro_COMBUSTIBLE": 0.07655268938472852,
+      "rubro_CONSTRUCCION": -0.040589218081957014,
+      "rubro_CONSULTORIA": -0.12710952516424143,
+      "rubro_MANTENIMIENTO": -0.1162477693693196,
+      "rubro_MATERIALES": 0.022840146771746818,
+      "rubro_OTROS": 0.0024256513419446558,
+      "rubro_PERSONAL": 0.14301976946810982,
+      "rubro_SALUD": -0.02482810486430329,
+      "rubro_SERV_GENERALES": 0.10074673176000594,
+      "rubro_TECNOLOGIA": -0.010519915239958783,
+      "rubro_TRANSPORTE_ALQUILER": -0.09134224763796142,
+      "tc_catalogo": 0.0409918380164623,
+      "tc_directa_otros": -0.09170697033050854,
+      "tc_hasta_8uit": 0.0410347251691515,
+      "tc_proceso_seleccion": -0.25501657684406576,
+      "tc_servicio_publico": -0.02544762673895007,
+      "tc_sin_proceso": 0.1247674278201417,
+      "te_contratista": 0.3100478078479724,
+      "te_departamento": 0.0001660726132727173,
+      "te_entidad": 0.8859483270691494
+    },
+    "config": {
+      "Workers": 16,
+      "Epochs": 5,
+      "BatchSize": 2048,
+      "LR": 0.01,
+      "L2": 0.00001,
+      "PosWeight": 12.528756296260303,
+      "Seed": 2026
+    },
+    "impacto": {
+      "ordenes_test": 463800,
+      "ordenes_senaladas": 40923,
+      "pct_senaladas": 0.08823415265200517,
+      "monto_test_pen": 6407966553.008711,
+      "monto_senalado_pen": 3466835821.983502,
+      "monto_riesgo_real_pen": 2879603204.5456276,
+      "monto_riesgo_detectado_pen": 2622237939.422819,
+      "pct_monto_riesgo_detectado": 0.9106247469385568,
+      "top10_precision": 0.5113626563173782,
+      "top10_recall": 0.6925480348069848,
+      "lift_top10": 6.925480348069848
+    },
+    "loss_por_epoca": [
+      0.9725360065011746,
+      0.8017460507897728,
+      0.7638489142513828,
+      0.7501736518296,
+      0.7447373608427351
+    ],
+    "segundos_entrenamiento": 0.5486691,
+    "test": {
+      "roc_auc": 0.9071908651108123,
+      "pr_auc_average_precision": 0.6073679156008468,
+      "umbral": 0.6700000000000004,
+      "accuracy": 0.9336114704614058,
+      "precision": 0.5422134252132053,
+      "recall": 0.6479296852187116,
+      "f1": 0.5903763519535978,
+      "tp": 22189,
+      "fp": 18734,
+      "tn": 410820,
+      "fn": 12057,
+      "recall_anuladas": 0.48402225755166933,
+      "recall_sobrecosto": 0.7485908562226
+    },
+    "workers": [
+      {
+        "worker": 0,
+        "arboles": 0,
+        "filas_shard": 104414,
+        "segundos": 0.2253916
+      },
+      {
+        "worker": 1,
+        "arboles": 0,
+        "filas_shard": 104414,
+        "segundos": 0.2309985
+      },
+      {
+        "worker": 2,
+        "arboles": 0,
+        "filas_shard": 104414,
+        "segundos": 0.2307901
+      },
+      {
+        "worker": 3,
+        "arboles": 0,
+        "filas_shard": 104414,
+        "segundos": 0.2238468
+      },
+      {
+        "worker": 4,
+        "arboles": 0,
+        "filas_shard": 104414,
+        "segundos": 0.2396198
+      },
+      {
+        "worker": 5,
+        "arboles": 0,
+        "filas_shard": 104414,
+        "segundos": 0.2398978
+      },
+      {
+        "worker": 6,
+        "arboles": 0,
+        "filas_shard": 104414,
+        "segundos": 0.2337453
+      },
+      {
+        "worker": 7,
+        "arboles": 0,
+        "filas_shard": 104414,
+        "segundos": 0.2197966
+      },
+      {
+        "worker": 8,
+        "arboles": 0,
+        "filas_shard": 104414,
+        "segundos": 0.2308112
+      },
+      {
+        "worker": 9,
+        "arboles": 0,
+        "filas_shard": 104414,
+        "segundos": 0.2337207
+      },
+      {
+        "worker": 10,
+        "arboles": 0,
+        "filas_shard": 104414,
+        "segundos": 0.2348801
+      },
+      {
+        "worker": 11,
+        "arboles": 0,
+        "filas_shard": 104414,
+        "segundos": 0.2267386
+      },
+      {
+        "worker": 12,
+        "arboles": 0,
+        "filas_shard": 104414,
+        "segundos": 0.2282189
+      },
+      {
+        "worker": 13,
+        "arboles": 0,
+        "filas_shard": 104414,
+        "segundos": 0.2397713
+      },
+      {
+        "worker": 14,
+        "arboles": 0,
+        "filas_shard": 104414,
+        "segundos": 0.2370938
+      },
+      {
+        "worker": 15,
+        "arboles": 0,
+        "filas_shard": 104402,
+        "segundos": 0.2067741
+      }
+    ]
+  },
+  "random_forest": {
+    "auc_solo_anulaciones": 0.8451528885405115,
+    "config": {
+      "Trees": 100,
+      "Workers": 16,
+      "SampleSize": 250000,
+      "MaxDepth": 16,
+      "MinLeaf": 50,
+      "Mtry": 7,
+      "Seed": 2026
+    },
+    "impacto": {
+      "ordenes_test": 463800,
+      "ordenes_senaladas": 32003,
+      "pct_senaladas": 0.0690017248814144,
+      "monto_test_pen": 6407966553.008711,
+      "monto_senalado_pen": 1677191807.3144424,
+      "monto_riesgo_real_pen": 2879603204.5456276,
+      "monto_riesgo_detectado_pen": 1373038009.6001112,
+      "pct_monto_riesgo_detectado": 0.47681500264782584,
+      "top10_precision": 0.5955368693402329,
+      "top10_recall": 0.8065467499853998,
+      "lift_top10": 8.065467499853998
+    },
+    "importancia": [
+      {
+        "feature": "log_monto_pen",
+        "importancia": 0.3807065232844934
+      },
+      {
+        "feature": "cerca_tope_8uit",
+        "importancia": 0.22951623469483784
+      },
+      {
+        "feature": "te_entidad",
+        "importancia": 0.082485857501642
+      },
+      {
+        "feature": "te_contratista",
+        "importancia": 0.03757229284684597
+      },
+      {
+        "feature": "rubro_PERSONAL",
+        "importancia": 0.01973480879049838
+      },
+      {
+        "feature": "tc_proceso_seleccion",
+        "importancia": 0.01921872915968582
+      },
+      {
+        "feature": "log_n_ordenes_entidad",
+        "importancia": 0.01901407202537895
+      },
+      {
+        "feature": "mes_emision",
+        "importancia": 0.01605475431917298
+      },
+      {
+        "feature": "te_departamento",
+        "importancia": 0.013609622560224684
+      },
+      {
+        "feature": "log_len_descripcion",
+        "importancia": 0.01345612263101615
+      },
+      {
+        "feature": "concentracion_contratista_en_entidad",
+        "importancia": 0.012847755318420861
+      },
+      {
+        "feature": "rubro_OTROS",
+        "importancia": 0.012437574210364085
+      },
+      {
+        "feature": "obj_servicios",
+        "importancia": 0.012163915337734464
+      },
+      {
+        "feature": "dias_emision_a_registro",
+        "importancia": 0.011273435425725889
+      },
+      {
+        "feature": "log_n_ordenes_contratista",
+        "importancia": 0.010600434591729444
+      },
+      {
+        "feature": "tc_hasta_8uit",
+        "importancia": 0.009584202244108967
+      },
+      {
+        "feature": "rubro_CONSULTORIA",
+        "importancia": 0.008772097185989513
+      },
+      {
+        "feature": "es_orden_compra",
+        "importancia": 0.008352358442703446
+      },
+      {
+        "feature": "rubro_SALUD",
+        "importancia": 0.008244890183290448
+      },
+      {
+        "feature": "contratista_pn",
+        "importancia": 0.008148727987538781
+      },
+      {
+        "feature": "log_n_entidades_contratista",
+        "importancia": 0.00811164012124844
+      },
+      {
+        "feature": "obj_bienes",
+        "importancia": 0.0076589589954259634
+      },
+      {
+        "feature": "tc_sin_proceso",
+        "importancia": 0.007246221032599563
+      },
+      {
+        "feature": "niv_gob_regional",
+        "importancia": 0.00611169505427991
+      },
+      {
+        "feature": "niv_gob_nacional",
+        "importancia": 0.004746230252980165
+      },
+      {
+        "feature": "contratista_empresa",
+        "importancia": 0.00457719063303858
+      },
+      {
+        "feature": "niv_muni_distrital",
+        "importancia": 0.004369191966280496
+      },
+      {
+        "feature": "rubro_MANTENIMIENTO",
+        "importancia": 0.004037733014939513
+      },
+      {
+        "feature": "es_lima_callao",
+        "importancia": 0.003746281048391182
+      },
+      {
+        "feature": "niv_salud",
+        "importancia": 0.003056039437072133
+      },
+      {
+        "feature": "rubro_TRANSPORTE_ALQUILER",
+        "importancia": 0.0023350728028498787
+      },
+      {
+        "feature": "tc_directa_otros",
+        "importancia": 0.002036875597726116
+      },
+      {
+        "feature": "rubro_SERV_GENERALES",
+        "importancia": 0.0019731518437871676
+      },
+      {
+        "feature": "rubro_MATERIALES",
+        "importancia": 0.0015035827322599324
+      },
+      {
+        "feature": "rubro_ALIMENTOS",
+        "importancia": 0.001038331002161312
+      },
+      {
+        "feature": "niv_muni_provincial",
+        "importancia": 0.00101483688038613
+      },
+      {
+        "feature": "rubro_CONSTRUCCION",
+        "importancia": 0.0007713711295411731
+      },
+      {
+        "feature": "tc_servicio_publico",
+        "importancia": 0.0007126952665617254
+      },
+      {
+        "feature": "niv_universidad",
+        "importancia": 0.00038587231682811224
+      },
+      {
+        "feature": "tc_catalogo",
+        "importancia": 0.0002758734038495591
+      },
+      {
+        "feature": "rubro_TECNOLOGIA",
+        "importancia": 0.0002356380241510791
+      },
+      {
+        "feature": "rubro_COMBUSTIBLE",
+        "importancia": 0.0001533320094947784
+      },
+      {
+        "feature": "obj_consultoria_obras",
+        "importancia": 0.000060023434907264374
+      },
+      {
+        "feature": "fin_de_semana",
+        "importancia": 0.000021854178103495013
+      },
+      {
+        "feature": "contratista_otro",
+        "importancia": 0.000013197357570266062
+      },
+      {
+        "feature": "contratista_es_entidad",
+        "importancia": 0.000012701722164118294
+      },
+      {
+        "feature": "moneda_extranjera",
+        "importancia": 0
+      }
+    ],
+    "segundos_entrenamiento": 1.789292,
+    "segundos_prediccion_val_test": 0.7221625,
+    "test": {
+      "roc_auc": 0.9511370008874672,
+      "pr_auc_average_precision": 0.8014990125886611,
+      "umbral": 0.3200000000000001,
+      "accuracy": 0.9619857697283312,
+      "precision": 0.7595850389026029,
+      "recall": 0.7098347252233838,
+      "f1": 0.7338676810216003,
+      "tp": 24309,
+      "fp": 7694,
+      "tn": 421860,
+      "fn": 9937,
+      "recall_anuladas": 0.4,
+      "recall_sobrecosto": 0.8905788673168114
+    },
+    "workers": [
+      {
+        "worker": 0,
+        "arboles": 7,
+        "filas_shard": 104414,
+        "segundos": 1.7185567000000002
+      },
+      {
+        "worker": 1,
+        "arboles": 7,
+        "filas_shard": 104414,
+        "segundos": 1.7552056999999999
+      },
+      {
+        "worker": 2,
+        "arboles": 7,
+        "filas_shard": 104414,
+        "segundos": 1.6862702999999999
+      },
+      {
+        "worker": 3,
+        "arboles": 7,
+        "filas_shard": 104414,
+        "segundos": 1.7085371
+      },
+      {
+        "worker": 4,
+        "arboles": 6,
+        "filas_shard": 104414,
+        "segundos": 1.6475256
+      },
+      {
+        "worker": 5,
+        "arboles": 6,
+        "filas_shard": 104414,
+        "segundos": 1.6725043
+      },
+      {
+        "worker": 6,
+        "arboles": 6,
+        "filas_shard": 104414,
+        "segundos": 1.6394777
+      },
+      {
+        "worker": 7,
+        "arboles": 6,
+        "filas_shard": 104414,
+        "segundos": 1.6435841
+      },
+      {
+        "worker": 8,
+        "arboles": 6,
+        "filas_shard": 104414,
+        "segundos": 1.6158674
+      },
+      {
+        "worker": 9,
+        "arboles": 6,
+        "filas_shard": 104414,
+        "segundos": 1.588165
+      },
+      {
+        "worker": 10,
+        "arboles": 6,
+        "filas_shard": 104414,
+        "segundos": 1.5325191
+      },
+      {
+        "worker": 11,
+        "arboles": 6,
+        "filas_shard": 104414,
+        "segundos": 1.6667041
+      },
+      {
+        "worker": 12,
+        "arboles": 6,
+        "filas_shard": 104414,
+        "segundos": 1.5168922999999999
+      },
+      {
+        "worker": 13,
+        "arboles": 6,
+        "filas_shard": 104414,
+        "segundos": 1.5916759
+      },
+      {
+        "worker": 14,
+        "arboles": 6,
+        "filas_shard": 104414,
+        "segundos": 1.5459385
+      },
+      {
+        "worker": 15,
+        "arboles": 6,
+        "filas_shard": 104402,
+        "segundos": 1.5680100000000001
+      }
+    ]
+  },
+  "split": {
+    "test": 463800,
+    "train": 1670612,
+    "validacion": 185623
+  },
+  "tasa_positivos_train": 0.0739166245663266,
+  "workers": 16
+}
