@@ -1,0 +1,15 @@
+digraph ER {
+  rankdir=LR; fontname="Helvetica"; node [fontname="Helvetica", fontsize=10, shape=plaintext]; edge [fontname="Helvetica", fontsize=9, color="#52514e"];
+  label="Entidades de MongoDB (base riesgogo)"; labelloc=t; fontsize=14;
+  usuarios [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="4" bgcolor="#eef4fc"><tr><td bgcolor="#2c6cb0"><font color="white"><b>usuarios</b></font></td></tr>
+    <tr><td align="left">_id: usuario (único)</td></tr><tr><td align="left">salt, hash (PBKDF2-SHA256)</td></tr><tr><td align="left">rol: admin | analista</td></tr><tr><td align="left">creado</td></tr></table>>];
+  entrenamientos [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="4" bgcolor="#e3f6ee"><tr><td bgcolor="#1baf7a"><font color="white"><b>entrenamientos</b></font></td></tr>
+    <tr><td align="left">_id, estado (en_curso|completado|error)</td></tr><tr><td align="left">parametros, usuario, inicio, fin</td></tr><tr><td align="left">segundos, nodos, auc_rf, auc_lr</td></tr><tr><td align="left">log[], tareas[] (nodo, items, seg)</td></tr></table>>];
+  predicciones [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="4" bgcolor="#fdf3e0"><tr><td bgcolor="#d8902b"><font color="white"><b>predicciones</b></font></td></tr>
+    <tr><td align="left">_id, ts (índice), usuario (índice)</td></tr><tr><td align="left">entrada{}</td></tr><tr><td align="left">score_rf, score_lr, riesgo, nivel</td></tr><tr><td align="left">latencia_ms, cache</td></tr></table>>];
+  metricas [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="4" bgcolor="#f2f1ed"><tr><td bgcolor="#52514e"><font color="white"><b>metricas_nodos</b></font></td></tr>
+    <tr><td align="left">_id, ts (TTL 7 días), nodo, sano</td></tr><tr><td align="left">latencia_ms, requests, busy_seg</td></tr><tr><td align="left">heap_mb, goroutines</td></tr></table>>];
+  ordenes [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="4" bgcolor="#fdeaea"><tr><td bgcolor="#c0504d"><font color="white"><b>ordenes_muestra</b></font></td></tr>
+    <tr><td align="left">_id: ruc_entidad|orden</td></tr><tr><td align="left">entidad, departamento, nivel_gobierno</td></tr><tr><td align="left">rubro, objeto, tipo_contratacion</td></tr><tr><td align="left">monto_pen, anulada, sobrecosto, riesgo</td></tr></table>>];
+  usuarios -> entrenamientos [label="1 : N (usuario)"]; usuarios -> predicciones [label="1 : N (usuario)"];
+}
