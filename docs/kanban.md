@@ -17,11 +17,16 @@ Columnas: **Backlog · To Do · In Progress · Review · Done**
 | 10 | Dockerfile + docker-compose | feature/docker | Integrante 1 |
 | 11 | Informe PC3 + reporte de participación | docs/informe-pc3 | Todos |
 
-## Backlog (PC4)
-- Nodo ML en Go con servidor TCP (protocolo JSON/gob) — reutiliza `TrainTreesOnShard` y `LocalGradient`
-- API coordinadora REST + WebSocket + JWT, Swagger
-- MongoDB (predicciones, métricas) y Redis (caché de scores)
-- Pruebas de latencia con Postman (< 100 ms)
+## Done (PC4)
+| # | Tarjeta | Rama | Responsable |
+|---|---|---|---|
+| 12 | Protocolo TCP, nodos ML y tolerancia a fallos | feature/nodos-cluster | Gamero |
+| 13 | Coordinador: RF y regresión logística distribuidos + evaluación | feature/nodos-cluster | Gamero |
+| 14 | Entidades y adaptadores MongoDB y Redis | feature/bases-de-datos | Ramírez |
+| 15 | Docker Compose: API + 3 nodos + MongoDB + Redis | feature/docker-compose | Ramírez |
+| 16 | API REST: JWT, predicciones, entrenamiento, métricas | feature/api-rest | Timana |
+| 17 | Swagger (openapi.yaml), colección Postman y prueba de latencia | feature/api-rest | Timana |
+| 18 | Informe PC4 + reporte de participación | docs/informe-pc4 | Todos |
 
 ## Backlog (TB2)
 - SPA React: login, dashboard de impacto, simulador de orden, panel del clúster
