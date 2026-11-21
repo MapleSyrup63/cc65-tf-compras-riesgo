@@ -1,0 +1,30 @@
+digraph G {
+  rankdir=LR; fontname="Helvetica"; compound=true;
+  node [fontname="Helvetica", fontsize=11, shape=box, style="rounded,filled", color="#52514e", fillcolor="#ffffff"];
+  edge [fontname="Helvetica", fontsize=9, color="#52514e"];
+  label="PC4 — Topología en estrella: coordinador (API) ↔ 3 nodos ML por TCP"; labelloc=t; fontsize=14;
+
+  cli [label="Cliente\nPostman / Swagger / SPA (TB2)", shape=box, fillcolor="#eef4fc"];
+
+  subgraph cluster_net { label="Red Docker riesgo_net"; style="rounded,dashed"; color="#8a8984"; fontsize=11;
+    subgraph cluster_api { label="Coordinador"; style="rounded"; color="#1baf7a";
+      api [label="API REST (Go, net/http)\nJWT HS256 · Swagger /docs\nlimitador de login · CORS\n:8080", fillcolor="#e3f6ee"];
+      pool [label="Cluster (client TCP)\nconexiones persistentes\nreparto de shards · fan-in\nreasignación si un nodo cae", fillcolor="#e3f6ee"];
+    }
+    subgraph cluster_nodes { label="Clúster de nodos ML (cada uno: dataset.bin de solo lectura)"; style="rounded"; color="#1baf7a";
+      n1 [label="nodo1 :9000\ngob sobre TCP\n4 goroutines locales", fillcolor="#e3f6ee"];
+      n2 [label="nodo2 :9000\ngob sobre TCP\n4 goroutines locales", fillcolor="#e3f6ee"];
+      n3 [label="nodo3 :9000\ngob sobre TCP\n4 goroutines locales", fillcolor="#e3f6ee"];
+    }
+    mongo [label="MongoDB 7\nusuarios · entrenamientos\npredicciones · metricas_nodos\nordenes_muestra", shape=cylinder, fillcolor="#fdf3e0"];
+    redis [label="Redis 7\ncaché de predicciones (10 min)\nestado del clúster (3 s)", shape=cylinder, fillcolor="#fdeaea"];
+  }
+  models [label="models/*.json\n(RF + regresión logística)", shape=note, fillcolor="#f2f1ed"];
+
+  cli -> api [dir=both, label="HTTP/JSON + JWT"];
+  api -> pool;
+  pool -> n1 [dir=both, label="TRAIN_TREES / GRADIENT\nSCALER / EVAL / PING"];
+  pool -> n2 [dir=both]; pool -> n3 [dir=both];
+  api -> mongo [label="persistencia\n(asíncrona)"]; api -> redis [label="caché (≤30 ms)"];
+  api -> models [dir=both, label="carga / recarga\nsin reiniciar"];
+}
